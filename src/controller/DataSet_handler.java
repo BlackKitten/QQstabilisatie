@@ -34,7 +34,7 @@ public class DataSet_handler {
 	}
 	
 	public void to_file(String fn){
-		this.ds.save(fn);
+		this.ds.saveAsTxt(fn, ";");
 	}
 
 	public void add_ga(double[] ga) {

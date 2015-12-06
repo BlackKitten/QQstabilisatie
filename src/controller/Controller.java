@@ -51,12 +51,27 @@ public class Controller {
 	}
 	
 	public void start() throws IOException, InterruptedException{
+		double[][] speeds_array={
+				{1200,1200,1200,1200},
+				{1300,1300,1300,1300},
+				{1400,1400,1400,1400},
+				{1500,1500,1500,1500},
+				{1600,1600,1600,1600},
+				{1700,1700,1700,1700},
+				{1800,1800,1800,1800}
+		};
 		
-		this.add_to_ds_ga(this.get_ga());
-		double[] speeds={1200,1200,1200,1200};
-		this.set_speed(speeds);
-		this.add_to_ds_speeds(speeds);
-		Thread.sleep(500);
-		this.add_to_ds_ga(this.get_ga());
+		for(double[] speeds:speeds_array){
+			this.add_to_ds_ga(this.get_ga());
+			this.set_speed(speeds);
+			this.add_to_ds_speeds(speeds);
+			Thread.sleep(500);
+			this.add_to_ds_ga(this.get_ga());
+		}
+	}
+	
+	public void toFile(){
+		this.ds_handler.to_file("ds_out.txt");
+		this.nn_handler.to_file("nn_out.nnet");
 	}
 }
