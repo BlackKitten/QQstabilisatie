@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.net.UnknownHostException;
 import java.util.Properties;
 
 
@@ -5,9 +7,11 @@ public class Controller {
 	
 	private NNHandler nn_handler;
 	private DataSet_handler ds_handler;
-	public Controller(Properties p){
+	private QQ_Client qq;
+	public Controller(Properties p) throws UnknownHostException, IOException{
 		this.nn_handler=new NNHandler(p);
 		this.ds_handler=new DataSet_handler(p);
+		this.qq=new QQ_Client(p);
 	}
 	
 	/**
@@ -15,11 +19,11 @@ public class Controller {
 	 */
 	
 	public void set_speed(double[] speeds){
-		
+		this.qq.send(speeds);
 	}
 	
 	public double[] get_ga(){
-		return new double[6];
+		return qq.read();
 	}
 	
 	/**
