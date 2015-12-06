@@ -1,3 +1,4 @@
+package controller;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.Properties;
@@ -22,7 +23,7 @@ public class Controller {
 		this.qq.send(speeds);
 	}
 	
-	public double[] get_ga(){
+	public double[] get_ga() throws IOException{
 		return qq.read();
 	}
 	

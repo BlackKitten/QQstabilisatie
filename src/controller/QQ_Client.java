@@ -1,3 +1,4 @@
+package controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +21,7 @@ public class QQ_Client {
 
 	private void setup() throws UnknownHostException, IOException {
 		// set's up connection with qq
-		sock = new Socket("192.168.4.1", 9999);
+		sock = new Socket("127.0.0.1", 9999);
 		this.out = new PrintWriter(sock.getOutputStream(), true);
 		this.in = new BufferedReader(new InputStreamReader(
 				sock.getInputStream()));
