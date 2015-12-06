@@ -37,8 +37,26 @@ public class Controller {
 		this.ds_handler.add(ga_old, ga_new,speeds);
 	}
 	
+	public void add_to_ds_ga(double[] ga){
+		this.ds_handler.add_ga(ga);
+	}
+	
+	public void add_to_ds_speeds(double[] speeds){
+		this.ds_handler.add_speeds(speeds);
+	}
+	
 	public double[] calculate(double[] current_ga,double[] desired_ga){
 		return this.nn_handler.calculate(current_ga, desired_ga);
 		
+	}
+	
+	public void start() throws IOException, InterruptedException{
+		
+		this.add_to_ds_ga(this.get_ga());
+		double[] speeds={1200,1200,1200,1200};
+		this.set_speed(speeds);
+		this.add_to_ds_speeds(speeds);
+		Thread.sleep(500);
+		this.add_to_ds_ga(this.get_ga());
 	}
 }

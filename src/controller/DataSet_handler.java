@@ -6,6 +6,9 @@ import org.neuroph.core.data.DataSet;
 
 public class DataSet_handler {
 	private DataSet ds;
+	private double[] ga_old;
+	private double[] ga_new;
+	private double[] speeds;
 	public DataSet_handler(Properties p) {
 		this.ds=new DataSet(12, 4);
 	}
@@ -32,5 +35,23 @@ public class DataSet_handler {
 	
 	public void to_file(String fn){
 		this.ds.save(fn);
+	}
+
+	public void add_ga(double[] ga) {
+		if(this.ga_old==null){
+			this.ga_old=ga;
+		}else{
+			this.ga_new=ga;
+			add(this.ga_old,this.ga_new,this.speeds);
+			this.ga_old=null;
+			this.ga_new=null;
+			this.speeds=null;
+		}
+		
+	}
+
+	public void add_speeds(double[] speeds) {
+		this.speeds=speeds;
+		
 	}
 }

@@ -16,7 +16,7 @@ public class NNHandler {
 	}
 	
 	private MultiLayerPerceptron createNN(){
-		MultiLayerPerceptron nn= new MultiLayerPerceptron(482,100,50,1);
+		MultiLayerPerceptron nn= new MultiLayerPerceptron(12,100,50,6);
         DynamicBackPropagation rule=new DynamicBackPropagation();
         nn.setLearningRule(rule);
         return nn;		
