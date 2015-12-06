@@ -40,6 +40,7 @@ public class QQ_Client {
 		for (int i = 0; i < 4; i++) {
 
 			this.out.write(rotors[i] + ":" + speeds[i] + ";");
+			this.out.flush();
 		}
 	}
 
