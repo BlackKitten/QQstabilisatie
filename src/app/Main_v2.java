@@ -11,7 +11,9 @@ public class Main_v2 {
 		try {
 			Controller troller = new Controller(new Properties());
 			try {
+				Thread.sleep(5000);
 				troller.start();
+				troller.toFile();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

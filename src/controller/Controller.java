@@ -17,13 +17,14 @@ public class Controller {
 	
 	/**
 	 * set's speed of rotors
+	 * @throws IOException 
 	 */
 	
-	public void set_speed(double[] speeds){
+	public void set_speed(double[] speeds) throws IOException{
 		this.qq.send(speeds);
 	}
 	
-	public double[] get_ga() throws IOException{
+	public double[] get_ga() throws IOException, InterruptedException{
 		return qq.read();
 	}
 	
@@ -51,23 +52,31 @@ public class Controller {
 	}
 	
 	public void start() throws IOException, InterruptedException{
+		double[] init_speeds={1200,1200,1200,1200};
+		this.set_speed(init_speeds);
+		Thread.sleep(2000);
+		
 		double[][] speeds_array={
+				{1000,1000,1000,1000},
+				{2000,2000,2000,2000},
 				{1200,1200,1200,1200},
 				{1300,1300,1300,1300},
 				{1400,1400,1400,1400},
 				{1500,1500,1500,1500},
 				{1600,1600,1600,1600},
 				{1700,1700,1700,1700},
-				{1800,1800,1800,1800}
+				{1800,1800,1800,1800},
+				{0,0,0,0}
 		};
 		
 		for(double[] speeds:speeds_array){
 			this.add_to_ds_ga(this.get_ga());
 			this.set_speed(speeds);
 			this.add_to_ds_speeds(speeds);
-			Thread.sleep(500);
+			Thread.sleep(1000);
 			this.add_to_ds_ga(this.get_ga());
 		}
+		
 	}
 	
 	public void toFile(){

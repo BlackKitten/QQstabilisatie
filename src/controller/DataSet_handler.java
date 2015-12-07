@@ -1,7 +1,10 @@
 package controller;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Properties;
 
 import org.neuroph.core.data.DataSet;
+import org.neuroph.core.exceptions.NeurophException;
 
 
 public class DataSet_handler {
@@ -10,7 +13,13 @@ public class DataSet_handler {
 	private double[] ga_new;
 	private double[] speeds;
 	public DataSet_handler(Properties p) {
+		//try{
+			//load_file("ds_out.txt");
+		//}catch(NeurophException e){
+			
+		
 		this.ds=new DataSet(12, 4);
+		//}
 	}
 
 	/**
@@ -19,9 +28,9 @@ public class DataSet_handler {
 	 * @param new_ga
 	 */
 	public void add(double[] old_ga,double[] new_ga, double[] speeds){
-		double[] input=new double[6];
+		double[] input=new double[12];
 		System.arraycopy(old_ga, 0, input, 0, old_ga.length);
-		System.arraycopy(new_ga, 0, input, 3, new_ga.length);
+		System.arraycopy(new_ga, 0, input, 6, new_ga.length);
 		this.ds.addRow(input, speeds);
 	}
 	
@@ -30,7 +39,7 @@ public class DataSet_handler {
 	}
 	
 	public void load_file(String fn){
-		this.ds=DataSet.createFromFile(fn, 12, 6, ";");
+		this.ds=DataSet.createFromFile(fn, 12, 4, ";");
 	}
 	
 	public void to_file(String fn){
