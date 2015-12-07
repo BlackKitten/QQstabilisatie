@@ -7,11 +7,11 @@ import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.DynamicBackPropagation;
 
 
-public class NNHandler {
+public class NN_handler {
 	private MultiLayerPerceptron nn;
 	private DataSet ds;
 	
-	public NNHandler(Properties p){
+	public NN_handler(Properties p){
 		this.nn=createNN();
 	}
 	

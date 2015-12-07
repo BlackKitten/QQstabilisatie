@@ -6,11 +6,11 @@ import java.util.Properties;
 
 public class Controller {
 	
-	private NNHandler nn_handler;
+	private NN_handler nn_handler;
 	private DataSet_handler ds_handler;
 	private QQ_Client qq;
 	public Controller(Properties p) throws UnknownHostException, IOException{
-		this.nn_handler=new NNHandler(p);
+		this.nn_handler=new NN_handler(p);
 		this.ds_handler=new DataSet_handler(p);
 		this.qq=new QQ_Client(p);
 	}
@@ -79,7 +79,7 @@ public class Controller {
 		
 	}
 	
-	public void toFile(){
+	public void toFile() throws IOException{
 		this.ds_handler.to_file("ds_out.txt");
 		this.nn_handler.to_file("nn_out.nnet");
 	}

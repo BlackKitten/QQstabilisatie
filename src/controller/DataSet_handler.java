@@ -42,8 +42,9 @@ public class DataSet_handler {
 		this.ds=DataSet.createFromFile(fn, 12, 4, ";");
 	}
 	
-	public void to_file(String fn){
+	public void to_file(String fn) throws IOException{
 		this.ds.saveAsTxt(fn, ";");
+		util.File_Handler.removeFirstLine(fn);
 	}
 
 	public void add_ga(double[] ga) {
