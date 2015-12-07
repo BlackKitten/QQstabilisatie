@@ -13,13 +13,13 @@ public class DataSet_handler {
 	private double[] ga_new;
 	private double[] speeds;
 	public DataSet_handler(Properties p) {
-		//try{
-			//load_file("ds_out.txt");
-		//}catch(NeurophException e){
+		try{
+			load_file("ds_out.txt");
+		}catch(NeurophException e){
 			
 		
 		this.ds=new DataSet(12, 4);
-		//}
+		}
 	}
 
 	/**
